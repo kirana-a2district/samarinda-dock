@@ -1,0 +1,11 @@
+object frInit: TfrInit
+  Left = 419
+  Height = 240
+  Top = 38
+  Width = 320
+  Caption = 'frInit'
+  DesignTimePPI = 120
+  OnShow = FormShow
+  ShowInTaskBar = stNever
+  LCLVersion = '2.2.3.0'
+end
