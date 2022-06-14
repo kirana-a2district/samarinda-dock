@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist;
+  x, xwindowlist, BGRABitmap;
 
 type
 
@@ -67,6 +67,8 @@ implementation
 {$R *.lfm}
 
 constructor TDockWindow.Create(AXWindowList: TXWindowList; AWindow: TWindow);
+var
+  bmp: TBGRABitmap;
 begin
   inherited Create(AXWindowList, AWindow);
   DockButton := TBCButton.Create(frDock);
@@ -74,11 +76,16 @@ begin
   DockButton.Parent := frDock.pnDock;
   DockButton.Constraints.MinWidth := frDock.btLaunch.Height;
   DockButton.OnClick := @DockButtonClick;
+  DockButton.ShowHint := True;
+  DockButton.Hint := Name;
   //ShowMessage('something happen');
   DockButton.Assign(frDock.btLaunch);
+  bmp := GetIcon;
+  DockButton.Glyph.Assign(bmp);
   if Command = Application.ExeName then
-    DockButton.Enabled := FAlse;
+    DockButton.Visible := FAlse;
   //DockButton.Width := frDock.pnDock.Width;
+  bmp.Free;
 end;
 
 destructor TDockWindow.Destroy;
@@ -129,7 +136,8 @@ end;
 
 procedure TfrDock.pnDockResize(Sender: TObject);
 begin
-  btLaunch.Width := btLaunch.Height;
+  //Top := Screen.Height - Height;
+  //Left := (Screen.Width div 2) - (Width div 2);
 end;
 
 procedure TfrDock.FormDestroy(Sender: TObject);
@@ -195,9 +203,11 @@ begin
   //);
   //SetWindowRgn(Handle, rgn, true);
   //rgnn.Handle:=rgn;
+  AutoSize := True;
   btLaunch.Width := btLaunch.Height;
   Top := Screen.Height - Height;
   Left := (Screen.Width div 2) - (Width div 2);
+
   //Form2.Parent := pnDock;
   //Form2.Show;
   //Form2.Align:=alClient;
@@ -212,7 +222,7 @@ begin
   mouseY:= Y;
   formX := Left;
   formY := Top;
-  //mouseHandled:=true;
+  mouseHandled:=true;
 end;
 
 procedure TfrDock.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,

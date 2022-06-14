@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="41" Y="23"/>
-        <UsageCount Value="23"/>
+        <UsageCount Value="44"/>
       </Unit>
       <Unit>
         <Filename Value="initdock.pas"/>
@@ -18,11 +18,9 @@
         <ComponentName Value="frInit"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="8" Y="34"/>
-        <UsageCount Value="23"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
+        <UsageCount Value="44"/>
       </Unit>
       <Unit>
         <Filename Value="maindock.pas"/>
@@ -32,142 +30,191 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="109"/>
-        <CursorPos X="33" Y="113"/>
-        <UsageCount Value="23"/>
+        <TopLine Value="128"/>
+        <CursorPos X="14" Y="140"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
         <UnitName Value="WindowListUtils"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="116"/>
+        <CursorPos X="15" Y="88"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../kiranacore-pkg/src/xwindowlist.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <CursorPos X="57" Y="62"/>
+        <UsageCount Value="14"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/graphics.pp"/>
+        <UnitName Value="Graphics"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1380"/>
+        <CursorPos X="17" Y="1389"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/config_lazarus/onlinepackagemanager/packages/bgrabitmap-master/bgrabitmap/unibitmap.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="236"/>
+        <CursorPos X="15" Y="242"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/config_lazarus/onlinepackagemanager/packages/bgrabitmap-master/bgrabitmap/bgracustombitmap.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="229"/>
+        <CursorPos X="16" Y="235"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/config_lazarus/onlinepackagemanager/packages/bgrabitmap-master/bgrabitmap/bgrabitmaptypes.pas"/>
+        <UnitName Value="BGRABitmapTypes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="123"/>
+        <CursorPos X="26" Y="128"/>
+        <UsageCount Value="12"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/include/rasterimage.inc"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="456"/>
+        <CursorPos Y="464"/>
+        <UsageCount Value="12"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/lazarus/components/lazutils/graphtype.pp"/>
+        <UnitName Value="GraphType"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="16"/>
-        <CursorPos X="35" Y="186"/>
+        <TopLine Value="168"/>
+        <CursorPos X="45" Y="174"/>
         <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/include/lclintfh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="93"/>
+        <CursorPos X="32" Y="98"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="26">
       <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="68" Column="5" TopLine="61"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="67" Column="5" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="66" Column="5" TopLine="59"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="67" Column="5" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="68" Column="5" TopLine="61"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="67" Column="5" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="68" Column="5" TopLine="61"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="67" Column="5" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="68" Column="5" TopLine="61"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="8" Column="76"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="42" Column="5" TopLine="35"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="14" Column="5" TopLine="7"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="83" Column="47" TopLine="83"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="106" Column="24" TopLine="100"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="9" Column="87" TopLine="9"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="10" Column="4" TopLine="7"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="67" Column="41" TopLine="60"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="177" Column="60" TopLine="163"/>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="121" Column="42" TopLine="110"/>
       </Position>
       <Position>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="182" Column="25" TopLine="173"/>
+        <Caret Line="117" Column="28" TopLine="113"/>
       </Position>
       <Position>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="183" Column="56" TopLine="160"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="17" Column="80" TopLine="6"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="71" Column="16" TopLine="66"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="72" Column="53" TopLine="62"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="74" Column="53" TopLine="64"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="221" Column="28" TopLine="211"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="164" Column="25" TopLine="159"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="102" Column="7" TopLine="82"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="91" Column="27" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="103" Column="7" TopLine="100"/>
+        <Caret Line="9" Column="28"/>
       </Position>
       <Position>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="185" Column="16" TopLine="175"/>
+        <Caret Line="120" TopLine="110"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="115" Column="24" TopLine="107"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="150" Column="11" TopLine="136"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="126" Column="17" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="125" Column="37" TopLine="115"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="98" Column="11" TopLine="89"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="107" Column="30" TopLine="94"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="83" Column="13" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="9" Column="53"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="83" Column="13" TopLine="75"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="9" Column="71"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="9" Column="3"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="147" Column="28" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="144" Column="3" TopLine="136"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="147" Column="26" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="144" Column="33" TopLine="136"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="147" Column="15" TopLine="139"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="123" Column="50" TopLine="122"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="144" TopLine="85"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="92" Column="51" TopLine="90"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="102" Column="54" TopLine="92"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="89" Column="15" TopLine="80"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
+        <Caret Line="103" Column="51" TopLine="94"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="71" Column="19" TopLine="75"/>
       </Position>
     </JumpHistory>
     <RunParams>

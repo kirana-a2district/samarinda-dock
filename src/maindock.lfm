@@ -19,6 +19,7 @@ object frDock: TfrDock
   OnResize = FormResize
   OnShow = FormShow
   ShowInTaskBar = stNever
+  LCLVersion = '2.2.3.0'
   object pnContainer: TPanel
     Left = 0
     Height = 74
@@ -27,8 +28,8 @@ object frDock: TfrDock
     AutoSize = True
     BevelOuter = bvNone
     BorderStyle = bsSingle
-    ClientHeight = 70
-    ClientWidth = 66
+    ClientHeight = 74
+    ClientWidth = 70
     TabOrder = 0
     object pnDock: TBCPanel
       Left = 0
@@ -83,6 +84,7 @@ object frDock: TfrDock
       object btLaunch: TBCButton
         Left = 5
         Height = 60
+        Hint = 'Launch App List'
         Top = 5
         Width = 56
         StateClicked.Background.Color = clHighlight
@@ -320,6 +322,7 @@ object frDock: TfrDock
         Rounding.RoundY = 10
         RoundingDropDown.RoundX = 1
         RoundingDropDown.RoundY = 1
+        ShowHint = True
         TextApplyGlobalOpacity = False
         MemoryUsage = bmuHigh
       end
