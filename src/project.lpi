@@ -58,6 +58,7 @@
         <Filename Value="docklauncher.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="frLauncher"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DockLauncher"/>
       </Unit>

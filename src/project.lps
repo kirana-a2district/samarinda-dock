@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="41" Y="23"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="60"/>
       </Unit>
       <Unit>
         <Filename Value="initdock.pas"/>
@@ -21,7 +21,7 @@
         <EditorIndex Value="2"/>
         <TopLine Value="31"/>
         <CursorPos X="19" Y="41"/>
-        <UsageCount Value="59"/>
+        <UsageCount Value="60"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,16 +32,30 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <TopLine Value="75"/>
-        <CursorPos X="39" Y="82"/>
-        <UsageCount Value="59"/>
+        <TopLine Value="119"/>
+        <CursorPos X="99" Y="127"/>
+        <UsageCount Value="60"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="docklauncher.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frLauncher"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DockLauncher"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="7"/>
+        <CursorPos X="36" Y="9"/>
+        <UsageCount Value="29"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
         <UnitName Value="WindowListUtils"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <TopLine Value="248"/>
         <CursorPos X="40" Y="256"/>
@@ -108,19 +122,6 @@
         <UsageCount Value="8"/>
       </Unit>
       <Unit>
-        <Filename Value="docklauncher.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="frLauncher"/>
-        <ResourceBaseClass Value="Form"/>
-        <UnitName Value="DockLauncher"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="25"/>
-        <CursorPos Y="37"/>
-        <UsageCount Value="28"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
-      </Unit>
-      <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/interfaces/qt5/qtobjects.pas"/>
         <EditorIndex Value="3"/>
         <TopLine Value="4702"/>
@@ -136,35 +137,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="102" Column="54" TopLine="92"/>
-      </Position>
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="89" Column="15" TopLine="80"/>
-      </Position>
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="103" Column="51" TopLine="94"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="71" Column="19" TopLine="75"/>
-      </Position>
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="94" Column="18" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="92" Column="27" TopLine="84"/>
-      </Position>
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="93" Column="25" TopLine="83"/>
-      </Position>
+    <JumpHistory HistoryIndex="25">
       <Position>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
         <Caret Line="90" Column="14" TopLine="82"/>
@@ -200,14 +173,6 @@
       <Position>
         <Filename Value="maindock.pas"/>
         <Caret Line="140" Column="13" TopLine="134"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="10" Column="43" TopLine="62"/>
-      </Position>
-      <Position>
-        <Filename Value="docklauncher.pas"/>
-        <Caret Column="18" TopLine="12"/>
       </Position>
       <Position>
         <Filename Value="docklauncher.pas"/>
@@ -250,12 +215,32 @@
         <Caret Line="166" Column="6" TopLine="164"/>
       </Position>
       <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="49" Column="27" TopLine="120"/>
-      </Position>
-      <Position>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
         <Caret Line="81" Column="24" TopLine="66"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="37" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="36" TopLine="24"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="38" TopLine="26"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="37" TopLine="25"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="49" Column="99" TopLine="46"/>
+      </Position>
+      <Position>
+        <Filename Value="docklauncher.pas"/>
+        <Caret Line="9" Column="36" TopLine="7"/>
       </Position>
     </JumpHistory>
     <RunParams>

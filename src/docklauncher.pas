@@ -5,15 +5,19 @@ unit DockLauncher;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
+  BCPanel, BCButton, qt5, qtwidgets;
 
 type
 
   { TfrLauncher }
 
   TfrLauncher = class(TForm)
-    Label1: TLabel;
+    btLaunch: TBCButton;
+    Panel1: TPanel;
+    pnLauncher: TBCPanel;
     procedure FormActivate(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
@@ -40,6 +44,12 @@ end;
 procedure TfrLauncher.FormActivate(Sender: TObject);
 begin
 
+end;
+
+procedure TfrLauncher.FormCreate(Sender: TObject);
+begin
+  QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
+  QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
 end;
 
 
