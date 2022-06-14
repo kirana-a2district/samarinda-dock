@@ -10,7 +10,7 @@ uses
   athreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, initdock, MainDock
+  Forms, initdock, MainDock, DockLauncher
   { you can add units after this };
 
 {$R *.res}
@@ -21,6 +21,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrInit, frInit);
   Application.CreateForm(TfrDock, frDock);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.
 

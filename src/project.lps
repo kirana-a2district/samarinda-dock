@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="41" Y="23"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="51"/>
       </Unit>
       <Unit>
         <Filename Value="initdock.pas"/>
@@ -20,7 +20,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="8" Y="34"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="51"/>
       </Unit>
       <Unit>
         <Filename Value="maindock.pas"/>
@@ -29,19 +29,17 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <TopLine Value="143"/>
+        <TopLine Value="146"/>
         <CursorPos X="14" Y="140"/>
-        <UsageCount Value="50"/>
+        <UsageCount Value="51"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
         <UnitName Value="WindowListUtils"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="97"/>
-        <CursorPos X="19" Y="107"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="75" Y="113"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
@@ -84,20 +82,18 @@
       </Unit>
       <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/include/rasterimage.inc"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="456"/>
         <CursorPos Y="464"/>
         <UsageCount Value="15"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/lazarus/components/lazutils/graphtype.pp"/>
         <UnitName Value="GraphType"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="168"/>
         <CursorPos X="45" Y="174"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/lazarus/lcl/include/lclintfh.inc"/>
@@ -105,6 +101,19 @@
         <TopLine Value="93"/>
         <CursorPos X="32" Y="98"/>
         <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="docklauncher.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DockLauncher"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="18"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">

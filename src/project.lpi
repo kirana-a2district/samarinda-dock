@@ -54,6 +54,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
       </Unit>
+      <Unit>
+        <Filename Value="docklauncher.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DockLauncher"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
