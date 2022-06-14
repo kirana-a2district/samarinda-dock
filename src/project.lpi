@@ -57,7 +57,7 @@
       <Unit>
         <Filename Value="docklauncher.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="frLauncher"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DockLauncher"/>
       </Unit>

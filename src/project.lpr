@@ -21,7 +21,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TfrInit, frInit);
   Application.CreateForm(TfrDock, frDock);
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(TfrLauncher, frLauncher);
   Application.Run;
 end.
 

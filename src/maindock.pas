@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist, BGRABitmap;
+  x, xwindowlist, BGRABitmap, DockLauncher;
 
 type
 
@@ -27,6 +27,7 @@ type
     pnContainer: TPanel;
     Timer1: TTimer;
     procedure btLaunchClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure pnDockResize(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -78,6 +79,7 @@ begin
   DockButton.OnClick := @DockButtonClick;
   DockButton.ShowHint := True;
   DockButton.Hint := Name;
+  DockButton.BorderSpacing.Around := 5;
   //ShowMessage('something happen');
   DockButton.Assign(frDock.btLaunch);
   bmp := GetIcon;
@@ -136,8 +138,8 @@ end;
 
 procedure TfrDock.pnDockResize(Sender: TObject);
 begin
-  //Top := Screen.Height - Height;
-  //Left := (Screen.Width div 2) - (Width div 2);
+  Top := Screen.Height - Height;
+  Left := (Screen.Width div 2) - (Width div 2);
 end;
 
 procedure TfrDock.FormDestroy(Sender: TObject);
@@ -147,8 +149,26 @@ end;
 
 procedure TfrDock.btLaunchClick(Sender: TObject);
 begin
+  if frLauncher.Visible then
+  begin
+    frLauncher.Close;
+  end
+  else
+  begin
+    frLauncher.Show;
+    //frLauncher.SetFocus;
+  end;
   //WindowList.UpdateDataList;
   //pnDock.Caption := WindowList.Count.ToString;
+end;
+
+procedure TfrDock.FormActivate(Sender: TObject);
+begin
+  //if frLauncher.Visible then
+  //begin
+  //  frLauncher.Visible := false;
+  //end;
+  //  frLauncher.Close;
 end;
 
 procedure TfrDock.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -205,8 +225,8 @@ begin
   //rgnn.Handle:=rgn;
   AutoSize := True;
   btLaunch.Width := btLaunch.Height;
-  Top := Screen.Height - Height;
-  Left := (Screen.Width div 2) - (Width div 2);
+  Top := Screen.WorkAreaHeight - Height;
+  Left := (Screen.WorkAreaWidth div 2) - (Width div 2);
 
   //Form2.Parent := pnDock;
   //Form2.Show;
@@ -222,7 +242,7 @@ begin
   mouseY:= Y;
   formX := Left;
   formY := Top;
-  mouseHandled:=true;
+  //mouseHandled:=true;
 end;
 
 procedure TfrDock.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,

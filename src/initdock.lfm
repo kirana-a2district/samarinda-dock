@@ -7,5 +7,9 @@ object frInit: TfrInit
   DesignTimePPI = 120
   OnShow = FormShow
   ShowInTaskBar = stNever
-  LCLVersion = '2.2.3.0'
+  object DockApp: TApplicationProperties
+    OnDeactivate = DockAppDeactivate
+    Left = 66
+    Top = 95
+  end
 end

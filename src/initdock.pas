@@ -5,13 +5,15 @@ unit initdock;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, MainDock;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, MainDock, DockLauncher;
 
 type
 
   { TfrInit }
 
   TfrInit = class(TForm)
+    DockApp: TApplicationProperties;
+    procedure DockAppDeactivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
 
@@ -32,6 +34,11 @@ procedure TfrInit.FormShow(Sender: TObject);
 begin
   frDock.Show;
   Hide;
+end;
+
+procedure TfrInit.DockAppDeactivate(Sender: TObject);
+begin
+  frLauncher.Close;
 end;
 
 end.

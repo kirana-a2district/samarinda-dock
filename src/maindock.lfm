@@ -10,6 +10,7 @@ object frDock: TfrDock
   ClientWidth = 942
   DesignTimePPI = 120
   FormStyle = fsSystemStayOnTop
+  OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -19,7 +20,6 @@ object frDock: TfrDock
   OnResize = FormResize
   OnShow = FormShow
   ShowInTaskBar = stNever
-  LCLVersion = '2.2.3.0'
   object pnContainer: TPanel
     Left = 0
     Height = 74
@@ -28,8 +28,8 @@ object frDock: TfrDock
     AutoSize = True
     BevelOuter = bvNone
     BorderStyle = bsSingle
-    ClientHeight = 74
-    ClientWidth = 70
+    ClientHeight = 70
+    ClientWidth = 66
     TabOrder = 0
     object pnDock: TBCPanel
       Left = 0

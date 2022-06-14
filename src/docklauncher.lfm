@@ -3,6 +3,22 @@ object frLauncher: TfrLauncher
   Height = 240
   Top = 250
   Width = 320
+  BorderStyle = bsNone
   Caption = 'frLauncher'
+  ClientHeight = 240
+  ClientWidth = 320
   DesignTimePPI = 120
+  FormStyle = fsStayOnTop
+  OnActivate = FormActivate
+  OnDeactivate = FormDeactivate
+  OnShow = FormShow
+  ShowInTaskBar = stNever
+  object Label1: TLabel
+    Left = 32
+    Height = 22
+    Top = 26
+    Width = 47
+    Caption = 'Label1'
+    ParentColor = False
+  end
 end
