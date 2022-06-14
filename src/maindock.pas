@@ -11,6 +11,8 @@ uses
 
 type
 
+
+  // to-do: grab active window information
   TDockWindow = class(TWindowData)
   public
     DockButton: TBCButton;
@@ -152,10 +154,12 @@ begin
   if frLauncher.Visible then
   begin
     frLauncher.Close;
+    btLaunch.StateNormal.Background.ColorOpacity := 0;
   end
   else
   begin
     frLauncher.Show;
+    btLaunch.StateNormal.Background.ColorOpacity := 20;
     //frLauncher.SetFocus;
   end;
   //WindowList.UpdateDataList;

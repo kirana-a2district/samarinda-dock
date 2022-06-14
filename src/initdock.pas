@@ -38,6 +38,7 @@ end;
 
 procedure TfrInit.DockAppDeactivate(Sender: TObject);
 begin
+  frDock.btLaunch.StateNormal.Background.ColorOpacity := 0;
   frLauncher.Close;
 end;
 

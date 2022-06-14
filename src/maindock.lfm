@@ -145,7 +145,7 @@ object frDock: TfrDock
         StateHover.FontEx.ShadowOffsetX = 5
         StateHover.FontEx.ShadowOffsetY = 5
         StateHover.FontEx.Style = []
-        StateNormal.Background.Color = clWhite
+        StateNormal.Background.Color = clBlue
         StateNormal.Background.ColorOpacity = 0
         StateNormal.Background.Gradient1.StartColor = 15921906
         StateNormal.Background.Gradient1.StartColorOpacity = 0
@@ -166,7 +166,7 @@ object frDock: TfrDock
         StateNormal.Background.Gradient2.Point2XPercent = 30
         StateNormal.Background.Gradient2.Point2YPercent = 100
         StateNormal.Background.Gradient1EndPercent = 90
-        StateNormal.Background.Style = bbsGradient
+        StateNormal.Background.Style = bbsColor
         StateNormal.Border.Color = 13816530
         StateNormal.Border.ColorOpacity = 0
         StateNormal.Border.LightOpacity = 200

@@ -10,7 +10,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="41" Y="23"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="62"/>
       </Unit>
       <Unit>
         <Filename Value="initdock.pas"/>
@@ -19,9 +19,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="31"/>
-        <CursorPos X="19" Y="41"/>
-        <UsageCount Value="61"/>
+        <TopLine Value="32"/>
+        <CursorPos X="87" Y="46"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -32,9 +32,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <TopLine Value="119"/>
-        <CursorPos X="99" Y="127"/>
-        <UsageCount Value="61"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="147"/>
+        <CursorPos X="54" Y="160"/>
+        <UsageCount Value="62"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -45,11 +46,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DockLauncher"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="55"/>
+        <TopLine Value="40"/>
         <CursorPos X="38" Y="65"/>
-        <UsageCount Value="30"/>
+        <UsageCount Value="31"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -156,14 +156,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="../../kiranacore-pkg/src/windowlistutils.pas"/>
-        <Caret Line="119" Column="7" TopLine="109"/>
-      </Position>
-      <Position>
-        <Filename Value="maindock.pas"/>
-        <Caret Line="140" Column="13" TopLine="134"/>
-      </Position>
       <Position>
         <Filename Value="docklauncher.pas"/>
         <Caret Line="40" Column="36" TopLine="26"/>
@@ -275,6 +267,14 @@
       <Position>
         <Filename Value="docklauncher.pas"/>
         <Caret Line="64" Column="41" TopLine="54"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="127" Column="99" TopLine="140"/>
+      </Position>
+      <Position>
+        <Filename Value="initdock.pas"/>
+        <Caret Line="41" Column="14" TopLine="31"/>
       </Position>
     </JumpHistory>
     <RunParams>
