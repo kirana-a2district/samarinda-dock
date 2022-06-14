@@ -330,7 +330,7 @@ object frDock: TfrDock
   end
   object Timer1: TTimer
     Enabled = False
-    Interval = 800
+    Interval = 500
     OnTimer = Timer1Timer
     Left = 664
   end
