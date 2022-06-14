@@ -6,13 +6,16 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  BCPanel, BCButton, qt5, qtwidgets;
+  BCPanel, BCButton, BGRASVGImageList, BGRAImageList, qt5, qtwidgets,
+  BGRAClasses;
 
 type
 
   { TfrLauncher }
 
   TfrLauncher = class(TForm)
+    imglist: TBGRAImageList;
+    svglist: TBGRASVGImageList;
     btLaunch: TBCButton;
     Panel1: TPanel;
     pnLauncher: TBCPanel;
@@ -50,14 +53,17 @@ procedure TfrLauncher.FormCreate(Sender: TObject);
 begin
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
+  svglist.PopulateImageList(imglist, [btLaunch.Glyph.Height]);
 end;
 
 
 
 procedure TfrLauncher.FormShow(Sender: TObject);
 begin
-  Top := frDock.Top - Height - 20;
+  Top := frDock.Top - Height - 10;
   Left := (frDock.Left + (frDock.btLaunch.Width div 2)) - (Width div 2);
+  imglist.GetBitmap(0, btLaunch.Glyph);
+
 end;
 
 end.
