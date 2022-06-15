@@ -82,13 +82,14 @@ begin
   DockButton.ShowHint := True;
   DockButton.Hint := Name;
   DockButton.BorderSpacing.Around := 5;
-  //ShowMessage('something happen');
+
   DockButton.Assign(frDock.btLaunch);
   bmp := GetIcon;
-  DockButton.Glyph.Assign(bmp);
+  DockButton.Glyph.Assign(bmp.Bitmap);
+
   if Command = Application.ExeName then
-    DockButton.Visible := FAlse;
-  //DockButton.Width := frDock.pnDock.Width;
+    DockButton.Visible := False;
+
   bmp.Free;
 end;
 
