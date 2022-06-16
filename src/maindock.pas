@@ -85,10 +85,8 @@ begin
 
   DockButton.Assign(frDock.btLaunch);
   bmp := GetIcon;
-  DockButton.Glyph.Assign(bmp.Bitmap);
-
-  if Command = Application.ExeName then
-    DockButton.Visible := False;
+  if Assigned(bmp) then
+    DockButton.Glyph.Assign(bmp.Bitmap);
 
   bmp.Free;
 end;
@@ -114,7 +112,9 @@ begin
       MinimizeWindow
     else
       ActivateWindow;
+      //MaximizeWindow;
   end;
+  frDock.WindowList.UpdateDataList;
   frDock.Timer1.Enabled := true;
 end;
 
