@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist, BGRABitmap, DockLauncher;
+  x, xwindowlist, BGRABitmap, DockLauncher, Menus;
 
 type
 
@@ -16,8 +16,12 @@ type
   TDockWindow = class(TWindowData)
   public
     DockButton: TBCButton;
+    DockPopup: TPopupMenu;
     procedure DockButtonClick(Sender: TObject);
     constructor Create(AXWindowList: TXWindowList; AWindow: TWindow); override;
+    procedure DockMaximizeWindow(Sender: TObject);
+    procedure DockMinimizeWindow(Sender: TObject);
+    procedure DockCloseWindow(Sender: TObject);
     destructor Destroy; override;
   end;
 
@@ -50,16 +54,13 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure Timer1Timer(Sender: TObject);
   private
-    WindowList: TWindowList;
     mouseHandled: boolean;
     mouseX: integer;
     mouseY: integer;
     formX: integer;
     formY: integer;
-    //procedure WMWindowPosChanged(var Message: TLMWindowPosChanged); message
-    //  LM_CHECKRESIZE;
   public
-
+    WindowList: TWindowList;
   end;
 
 var
@@ -72,50 +73,108 @@ implementation
 constructor TDockWindow.Create(AXWindowList: TXWindowList; AWindow: TWindow);
 var
   bmp: TBGRABitmap;
+  Item: TMenuItem;
 begin
   inherited Create(AXWindowList, AWindow);
-  DockButton := TBCButton.Create(frDock);
+  DockButton := TBCButton.Create(nil);
   DockButton.AutoSize := False;
   DockButton.Parent := frDock.pnDock;
   DockButton.Constraints.MinWidth := frDock.btLaunch.Height;
   DockButton.OnClick := @DockButtonClick;
   DockButton.ShowHint := True;
-  DockButton.Hint := Name;
+  DockButton.Hint := Name + ' (' + ExtractFileName(Command) + ')';
   DockButton.BorderSpacing.Around := 5;
+
+  DockPopup := TPopupMenu.Create(nil);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := 'New Window';
+  //Item.OnClick := @DockMaximizeWindow;
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := 'Recent Files';
+  //Item.OnClick := @DockMaximizeWindow;
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := '-';
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := 'Maximize/Restore';
+  Item.OnClick := @DockMaximizeWindow;
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := 'Minimize';
+  Item.OnClick := @DockMinimizeWindow;
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := '-';
+  DockPopup.Items.Add(Item);
+
+  Item := TMenuItem.Create(DockPopup);
+  Item.Caption := 'Close';
+  Item.OnClick := @DockCloseWindow;
+  DockPopup.Items.Add(Item);
 
   DockButton.Assign(frDock.btLaunch);
   bmp := GetIcon;
   if Assigned(bmp) then
     DockButton.Glyph.Assign(bmp.Bitmap);
-
+  DockButton.PopupMenu := DockPopup;
   bmp.Free;
 end;
 
 destructor TDockWindow.Destroy;
 begin
+  FreeAndNil(DockPopup);
   FreeAndNil(DockButton);
   inherited Destroy;
 end;
 
+procedure TDockWindow.DockMaximizeWindow(Sender: TObject);
+begin
+  MaximizeWindow;
+end;
+
+procedure TDockWindow.DockMinimizeWindow(Sender: TObject);
+begin
+  MinimizeWindow;
+end;
+
+procedure TDockWindow.DockCloseWindow(Sender: TObject);
+begin
+  CloseWindow;
+end;
+
 procedure TDockWindow.DockButtonClick(Sender: TObject);
 begin
-  frDock.Timer1.Enabled := False;
-  //frDock.Focused := False;
-  //ShowMessage(currentItem.SubItems[0]);
-  if State = 'Iconic' then
+  // Do not do anything if TDockWindow is gone
+  if Assigned(Sender) then
   begin
-    ActivateWindow;
-  end
-  else
-  begin
-    if Self = frDock.WindowList[frDock.WindowList.ActiveIndex] then
-      MinimizeWindow
-    else
+    frDock.WindowList.PauseUpdate;
+    if State = 'Iconic' then
+    begin
       ActivateWindow;
-      //MaximizeWindow;
+    end
+    else
+    begin
+      if Self = frDock.WindowList[frDock.WindowList.ActiveIndex] then
+      begin
+        MinimizeWindow
+      end
+      else
+      begin
+        ActivateWindow;
+      end;
+        //MaximizeWindow;
+    end;
+
+    frDock.WindowList.ResumeUpdate;
   end;
-  frDock.WindowList.UpdateDataList;
-  frDock.Timer1.Enabled := true;
 end;
 
 { TfrDock }
@@ -217,7 +276,7 @@ var
   rgn: HRGN;
   rgnn: TRegion;
 begin
-  Timer1.Enabled := True;
+  //Timer1.Enabled := True;
   //rgn := CreateRoundRectRgn(
   //  0,
   //  1,

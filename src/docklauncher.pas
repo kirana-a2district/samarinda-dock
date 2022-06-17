@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   BCPanel, BCButton, BGRASVGImageList, BGRAImageList, qt5, qtwidgets,
-  BGRAClasses, SystemAppMonitor, BCTypes, fgl;
+  BGRAClasses, SystemAppMonitor, BCTypes, fgl, process;
 
 type
 
@@ -33,6 +33,7 @@ type
     StartRefresh: boolean;
     AppMon: TSystemAppMonitor;
     BCButtons: TBCButtonList;
+    procedure OpenApp(Sender: TObject);
     procedure AppMonRefreshed(Sender: TObject);
   public
 
@@ -71,9 +72,52 @@ begin
       //if FileExists(AppMon.Items[i].IconName) then
         btn.Glyph.Assign(btLaunch.Glyph);
       btn.BorderSpacing.Around := btLaunch.BorderSpacing.Around;
+      btn.OnClick := @OpenApp;
       BCButtons.Add(btn);
     end;
   end;
+end;
+
+procedure StartDetachedProgram(cmd: string);
+var
+  Process: TProcess;
+  I: Integer;
+begin
+  Process := TProcess.Create(nil);
+  try
+    Process.InheritHandles := False;
+    Process.Options := [];
+    Process.ShowWindow := swoShow;
+
+    // Copy default environment variables including DISPLAY variable for GUI application to work
+    for I := 1 to GetEnvironmentVariableCount do
+    begin
+      Process.Environment.Add(GetEnvironmentString(I));
+    end;
+
+    Process.CommandLine := cmd;
+    Process.Execute;
+  finally
+    Process.Free;
+  end;
+end;
+
+procedure TfrLauncher.OpenApp(Sender: TObject);
+var
+  i: integer;
+  argres: string;
+begin
+  frDock.WindowList.PauseUpdate;
+  for i := 0 to BCButtons.Count -1 do
+  begin
+    if TBCButton(Sender) = BCButtons[i] then
+    begin
+      StartDetachedProgram(AppMon.Items[i].Exec + ' ' +AppMon.Items[i].ArgStr);
+      //AppMon.Items[i].Exec;
+    end;
+  end;
+  Close;
+  frDock.WindowList.ResumeUpdate;
 end;
 
 procedure TfrLauncher.FormDeactivate(Sender: TObject);
