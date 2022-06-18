@@ -5,7 +5,8 @@ unit initdock;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, MainDock, DockLauncher;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, UniqueInstance,
+  MainDock, DockLauncher;
 
 type
 
@@ -13,6 +14,7 @@ type
 
   TfrInit = class(TForm)
     DockApp: TApplicationProperties;
+    UniqueInstance1: TUniqueInstance;
     procedure DockAppDeactivate(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private

@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   BCPanel, BCButton, BGRASVGImageList, BGRAImageList, qt5, qtwidgets,
-  BGRAClasses, SystemAppMonitor, BCTypes, fgl, process;
+  BGRAClasses, SystemAppMonitor, BCTypes, fgl, process, BGRABitmap;
 
 type
 
@@ -49,10 +49,55 @@ uses MainDock;
 
 { TfrLauncher }
 
+function ReadBitmapName(name: string): TBGRABitmap;
+var
+  bmp, bmpsc: TBGRABitmap;
+  paths: TStrings;
+  i: integer;
+begin
+  paths := TStringList.Create;
+  Result := nil;
+  paths.Add('/usr/share/pixmaps/');
+  paths.Add('/usr/share/icons/hicolor/256x256/apps/');
+  paths.Add('/usr/share/icons/hicolor/192x192/apps/');
+  paths.Add('/usr/share/icons/hicolor/128x128/apps/');
+  paths.Add('/usr/share/icons/hicolor/96x96/apps/');
+  paths.Add('/usr/share/icons/hicolor/72x72/apps/');
+  paths.Add('/usr/share/icons/hicolor/64x64/apps/');
+  paths.Add('/usr/share/icons/hicolor/48x48/apps/');
+  paths.Add('/usr/share/icons/hicolor/36x36/apps/');
+  paths.Add('/usr/share/icons/hicolor/32x32/apps/');
+  paths.Add('/usr/share/icons/hicolor/24x24/apps/');
+  paths.Add('/usr/share/icons/hicolor/22x22/apps/');
+  paths.Add('/usr/share/icons/hicolor/16x16/apps/');
+  for i := 0 to paths.Count -1 do
+  begin
+    if FileExists(paths[i] + name +'.png') then
+    begin
+      if paths[i].Contains('64x64') then
+      begin
+        bmp := TBGRABitmap.Create(paths[i] + name +'.png');
+        Result := bmp;
+      end
+      else
+      begin
+        bmp := TBGRABitmap.Create(paths[i] + name +'.png');
+        bmpsc := bmp.Resample(64, 64);
+        Result := bmpsc;
+        bmp.Free;
+      end;
+      Break;
+    end;
+  end;
+
+  paths.Free;
+end;
+
 procedure TfrLauncher.AppMonRefreshed(Sender: TObject);
 var
   i: integer;
   btn: TBCButton;
+  bmp: TBGRABitmap;
 begin
   if Visible then
   begin
@@ -70,6 +115,14 @@ begin
       btn.Constraints.MaxWidth := btLaunch.Width;
       btn.Caption := AppMon.Items[i].Name;
       //if FileExists(AppMon.Items[i].IconName) then
+        //btn.Glyph.Assign(btLaunch.Glyph);
+      bmp := ReadBitmapName(AppMon.Items[i].IconName);
+      if bmp <> nil then
+      begin
+        btn.Glyph.Assign(bmp.Bitmap);
+        bmp.Free;
+      end
+      else
         btn.Glyph.Assign(btLaunch.Glyph);
       btn.BorderSpacing.Around := btLaunch.BorderSpacing.Around;
       btn.OnClick := @OpenApp;

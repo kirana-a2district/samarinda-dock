@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist, BGRABitmap, DockLauncher, Menus;
+  x, xwindowlist, BGRABitmap, DockLauncher, Menus, BCTypes;
 
 type
 
@@ -19,6 +19,7 @@ type
     DockPopup: TPopupMenu;
     procedure DockButtonClick(Sender: TObject);
     constructor Create(AXWindowList: TXWindowList; AWindow: TWindow); override;
+    procedure DoActiveChange(IsActive: boolean); override;
     procedure DockMaximizeWindow(Sender: TObject);
     procedure DockMinimizeWindow(Sender: TObject);
     procedure DockCloseWindow(Sender: TObject);
@@ -126,13 +127,25 @@ begin
     DockButton.Glyph.Assign(bmp.Bitmap);
   DockButton.PopupMenu := DockPopup;
   bmp.Free;
+  // LCL's autosize doesn't work properly?
+  frDock.Refresh;
 end;
 
 destructor TDockWindow.Destroy;
 begin
+  // LCL's autosize doesn't work properly?
+  frDock.Refresh;
   FreeAndNil(DockPopup);
   FreeAndNil(DockButton);
   inherited Destroy;
+end;
+
+procedure TDockWindow.DoActiveChange(IsActive: boolean);
+begin
+  if IsActive then
+    DockButton.StateNormal.Background.ColorOpacity := 20
+  else
+    DockButton.StateNormal.Background.ColorOpacity := 0;
 end;
 
 procedure TDockWindow.DockMaximizeWindow(Sender: TObject);
@@ -142,7 +155,10 @@ end;
 
 procedure TDockWindow.DockMinimizeWindow(Sender: TObject);
 begin
-  MinimizeWindow;
+  if State = 'Iconic' then
+    ActivateWindow
+  else
+    MinimizeWindow;
 end;
 
 procedure TDockWindow.DockCloseWindow(Sender: TObject);
@@ -261,8 +277,8 @@ end;
 
 procedure TfrDock.FormResize(Sender: TObject);
 begin
-  pnContainer.Height:=Height;
-  pnContainer.Width:=Width;
+  //pnContainer.Height:=Height;
+  //pnContainer.Width:=Width;
 
 end;
 
