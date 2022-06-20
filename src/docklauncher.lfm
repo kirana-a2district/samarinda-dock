@@ -322,8 +322,14 @@ object frLauncher: TfrLauncher
       Height = 482
       Top = 58
       Width = 726
+      HorzScrollBar.Increment = 13
       HorzScrollBar.Page = 130
+      HorzScrollBar.Smooth = True
+      HorzScrollBar.Tracking = True
+      VertScrollBar.Increment = 15
       VertScrollBar.Page = 150
+      VertScrollBar.Smooth = True
+      VertScrollBar.Tracking = True
       Align = alClient
       BorderSpacing.Around = 10
       BorderStyle = bsNone
@@ -331,6 +337,8 @@ object frLauncher: TfrLauncher
       ClientHeight = 482
       ClientWidth = 726
       TabOrder = 1
+      OnMouseEnter = ScrollBox1MouseEnter
+      OnMouseLeave = ScrollBox1MouseLeave
       object btLaunch: TBCButton
         Left = 15
         Height = 120
@@ -390,7 +398,7 @@ object frLauncher: TfrLauncher
         StateHover.Border.LightOpacity = 200
         StateHover.Border.Style = bboSolid
         StateHover.Border.Width = 0
-        StateHover.FontEx.Color = clWhite
+        StateHover.FontEx.Color = clBtnText
         StateHover.FontEx.FontQuality = fqSystemClearType
         StateHover.FontEx.SingleLine = False
         StateHover.FontEx.Shadow = False
@@ -425,7 +433,7 @@ object frLauncher: TfrLauncher
         StateNormal.Border.ColorOpacity = 0
         StateNormal.Border.LightOpacity = 200
         StateNormal.Border.Style = bboSolid
-        StateNormal.FontEx.Color = clBlack
+        StateNormal.FontEx.Color = clBtnText
         StateNormal.FontEx.FontQuality = fqSystemClearType
         StateNormal.FontEx.SingleLine = False
         StateNormal.FontEx.Shadow = False

@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   BCPanel, BCButton, BGRASVGImageList, BGRAImageList, qt5, qtwidgets,
-  BGRAClasses, SystemAppMonitor, BCTypes, fgl, process, BGRABitmap;
+  BGRAClasses, SystemAppMonitor, BCTypes, fgl, process, BGRABitmap, BGRASVG,
+  IniFiles;
 
 type
 
@@ -29,6 +30,8 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ScrollBox1MouseEnter(Sender: TObject);
+    procedure ScrollBox1MouseLeave(Sender: TObject);
   private
     StartRefresh: boolean;
     AppMon: TSystemAppMonitor;
@@ -49,14 +52,39 @@ uses MainDock;
 
 { TfrLauncher }
 
+function ReadKDEConfig: string;
+var
+  cfg: TIniFile;
+begin
+  Result := '';
+  //ShowMessage(GetEnvironmentVariable('HOME')+'/.kde/share/config/kdeglobals');
+  if FileExists(GetEnvironmentVariable('HOME')+'/.kde/share/config/kdeglobals') then
+  begin
+    //ShowMessage(GetEnvironmentVariable('HOME')+'/.kde/share/config/kdeglobals');
+    cfg := TIniFile.Create(GetEnvironmentVariable('HOME')+'/.kde/share/config/kdeglobals');
+    Result := cfg.ReadString('Icons', 'Theme', '');
+    cfg.Free;
+  end;
+end;
+
 function ReadBitmapName(name: string): TBGRABitmap;
 var
   bmp, bmpsc: TBGRABitmap;
+  bsvg: TBGRASVG;
   paths: TStrings;
   i: integer;
 begin
   paths := TStringList.Create;
   Result := nil;
+  if ReadKDEConfig <> '' then
+  begin
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/64/');
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/48/');
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/32/');
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/24/');
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/22/');
+    paths.Add('/usr/share/icons/'+ReadKDEConfig+'/apps/16/');
+  end;
   paths.Add('/usr/share/pixmaps/');
   paths.Add('/usr/share/icons/hicolor/256x256/apps/');
   paths.Add('/usr/share/icons/hicolor/192x192/apps/');
@@ -82,6 +110,47 @@ begin
       else
       begin
         bmp := TBGRABitmap.Create(paths[i] + name +'.png');
+        bmpsc := bmp.Resample(64, 64);
+        Result := bmpsc;
+        bmp.Free;
+      end;
+      Break;
+    end
+    else if FileExists(paths[i] + name +'.svg') then
+    begin
+      { can't read kwrite svg }
+      if name = 'kwrite' then
+        Break;
+      if paths[i].Contains('64') then
+      begin
+        bsvg := TBGRASVG.Create;
+        bsvg.LoadFromFile(paths[i] + name +'.svg');
+        bmp := TBGRABitmap.Create(64, 64);
+        bsvg.StretchDraw(bmp.Canvas2D, taCenter, tlCenter, 0, 0,
+          bmp.Width, bmp.Height);
+        bsvg.Free;
+        Result := bmp;
+      end
+      else if paths[i].Contains('48') then
+      begin
+        bsvg := TBGRASVG.Create;
+        bsvg.LoadFromFile(paths[i] + name +'.svg');
+        bmp := TBGRABitmap.Create(48, 48);
+        bsvg.StretchDraw(bmp.Canvas2D, taCenter, tlCenter, 0, 0,
+          bmp.Width, bmp.Height);
+        bsvg.Free;
+        bmpsc := bmp.Resample(64, 64);
+        Result := bmpsc;
+        bmp.Free;
+      end
+      else if paths[i].Contains('32') then
+      begin
+        bsvg := TBGRASVG.Create;
+        bsvg.LoadFromFile(paths[i] + name +'.svg');
+        bmp := TBGRABitmap.Create(32, 32);
+        bsvg.StretchDraw(bmp.Canvas2D, taCenter, tlCenter, 0, 0,
+          bmp.Width, bmp.Height);
+        bsvg.Free;
         bmpsc := bmp.Resample(64, 64);
         Result := bmpsc;
         bmp.Free;
@@ -219,6 +288,18 @@ begin
     AppMon.Refresh(Self);
     StartRefresh := True;
   end;
+end;
+
+procedure TfrLauncher.ScrollBox1MouseEnter(Sender: TObject);
+begin
+  //ScrollBox1.VertScrollBar.Visible := True;
+  //ScrollBox1.HorzScrollBar.Visible := True;
+end;
+
+procedure TfrLauncher.ScrollBox1MouseLeave(Sender: TObject);
+begin
+  //ScrollBox1.VertScrollBar.Visible := False;
+  //ScrollBox1.HorzScrollBar.Visible := False;
 end;
 
 end.

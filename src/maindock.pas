@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist, BGRABitmap, DockLauncher, Menus, BCTypes;
+  x, xwindowlist, BGRABitmap, DockLauncher, Menus, BCTypes, xatom, xlib, ctypes;
 
 type
 
@@ -68,7 +68,7 @@ var
   frDock: TfrDock;
 
 implementation
-
+uses initdock;
 {$R *.lfm}
 
 constructor TDockWindow.Create(AXWindowList: TXWindowList; AWindow: TWindow);
@@ -81,6 +81,8 @@ begin
   DockButton.AutoSize := False;
   DockButton.Parent := frDock.pnDock;
   DockButton.Constraints.MinWidth := frDock.btLaunch.Height;
+  DockButton.StateNormal.Background.ColorOpacity := 0;
+  DockButton.StateNormal.Background.Color := clBlue;
   DockButton.OnClick := @DockButtonClick;
   DockButton.ShowHint := True;
   DockButton.Hint := Name + ' (' + ExtractFileName(Command) + ')';
@@ -142,8 +144,8 @@ end;
 
 procedure TDockWindow.DoActiveChange(IsActive: boolean);
 begin
-  if IsActive then
-    DockButton.StateNormal.Background.ColorOpacity := 20
+  if IsActive and (State <> 'Iconic') then
+    DockButton.StateNormal.Background.ColorOpacity := 50
   else
     DockButton.StateNormal.Background.ColorOpacity := 0;
 end;
@@ -197,16 +199,16 @@ end;
 
 procedure TfrDock.FormCreate(Sender: TObject);
 begin
-  mouseHandled:=false;
-  WindowList := TWindowList.Create(TDockWindow);
   //QWidget_setVisible(TQtMainWindow(Self.Handle).GetContainerWidget, false);
   //TQtWidget(pnDock.Handle).setParent(TQtMainWindow(Self.Handle).Widget);
+
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
   pnContainer.Align:=alClient;
   {$ifdef LCLQT5}
     Caption:= 'qt5';
   {$endif}
+  WindowList := TWindowList.Create(TDockWindow);
 end;
 
 procedure TfrDock.Button1Click(Sender: TObject);
@@ -227,6 +229,10 @@ end;
 
 procedure TfrDock.btLaunchClick(Sender: TObject);
 begin
+  //frLauncher.Panel1.Caption :=
+  //
+  //QWidget_winId(TQtMainWindow(Self.Handle).Widget).ToString;
+  //WindowList.XWindowListData.SetDockedMode(QWidget_winId(TQtMainWindow(Self.Handle).Widget));
   if frLauncher.Visible then
   begin
     frLauncher.Close;
@@ -235,7 +241,7 @@ begin
   else
   begin
     frLauncher.Show;
-    btLaunch.StateNormal.Background.ColorOpacity := 20;
+    btLaunch.StateNormal.Background.ColorOpacity := 50;
     //frLauncher.SetFocus;
   end;
   //WindowList.UpdateDataList;
@@ -291,28 +297,22 @@ procedure TfrDock.FormShow(Sender: TObject);
 var
   rgn: HRGN;
   rgnn: TRegion;
+  SelfWindow: TWindow;
 begin
-  //Timer1.Enabled := True;
-  //rgn := CreateRoundRectRgn(
-  //  0,
-  //  1,
-  //  ClientWidth,
-  //  ClientHeight,
-  //  10,
-  //  10
-  //);
-  //SetWindowRgn(Handle, rgn, true);
-  //rgnn.Handle:=rgn;
-  AutoSize := True;
+  mouseHandled:=false;
+
+  SelfWindow := QWidget_winId(TQtMainWindow(Self.Handle).Widget);
+  Self.FormStyle := fsSystemStayOnTop;
+  WindowList.XWindowListData.SetDockedMode(SelfWindow);
+  WindowList.XWindowListData.ActivateWindow(SelfWindow);
+
+
   btLaunch.Width := btLaunch.Height;
   Top := Screen.WorkAreaHeight - Height;
   Left := (Screen.WorkAreaWidth div 2) - (Width div 2);
 
-  //Form2.Parent := pnDock;
-  //Form2.Show;
-  //Form2.Align:=alClient;
-  //SetShape(rgnn);
-  //WindowList.UpdateDataList;
+  Self.ShowInTaskBar := stNever;
+  AutoSize := True;
 end;
 
 procedure TfrDock.Panel1MouseDown(Sender: TObject; Button: TMouseButton;

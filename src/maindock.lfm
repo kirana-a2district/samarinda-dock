@@ -9,7 +9,6 @@ object frDock: TfrDock
   ClientHeight = 68
   ClientWidth = 942
   DesignTimePPI = 120
-  FormStyle = fsSystemStayOnTop
   OnActivate = FormActivate
   OnClose = FormClose
   OnCreate = FormCreate
@@ -19,24 +18,23 @@ object frDock: TfrDock
   OnMouseUp = FormMouseUp
   OnResize = FormResize
   OnShow = FormShow
-  ShowInTaskBar = stNever
   object pnContainer: TPanel
     Left = 0
     Height = 76
     Top = 0
-    Width = 72
+    Width = 76
     AutoSize = True
     BevelOuter = bvNone
     BorderWidth = 1
     BorderStyle = bsSingle
     ClientHeight = 72
-    ClientWidth = 68
+    ClientWidth = 72
     TabOrder = 0
     object pnDock: TBCPanel
       Left = 1
       Height = 70
       Top = 1
-      Width = 66
+      Width = 70
       Align = alClient
       AutoSize = True
       ChildSizing.EnlargeVertical = crsScaleChilds
@@ -87,7 +85,7 @@ object frDock: TfrDock
         Height = 60
         Hint = 'Launch App List'
         Top = 5
-        Width = 56
+        Width = 60
         StateClicked.Background.Color = clHighlight
         StateClicked.Background.ColorOpacity = 50
         StateClicked.Background.Gradient1.StartColor = 16422228
@@ -118,7 +116,7 @@ object frDock: TfrDock
         StateClicked.FontEx.ShadowOffsetY = 5
         StateClicked.FontEx.Style = []
         StateHover.Background.Color = clHighlight
-        StateHover.Background.ColorOpacity = 30
+        StateHover.Background.ColorOpacity = 70
         StateHover.Background.Gradient1.StartColor = 16298351
         StateHover.Background.Gradient1.EndColor = 16547629
         StateHover.Background.Gradient1.GradientType = gtLinear
@@ -146,7 +144,7 @@ object frDock: TfrDock
         StateHover.FontEx.ShadowOffsetX = 5
         StateHover.FontEx.ShadowOffsetY = 5
         StateHover.FontEx.Style = []
-        StateNormal.Background.Color = clBlue
+        StateNormal.Background.Color = clHighlight
         StateNormal.Background.ColorOpacity = 0
         StateNormal.Background.Gradient1.StartColor = 15921906
         StateNormal.Background.Gradient1.StartColorOpacity = 0
@@ -182,6 +180,7 @@ object frDock: TfrDock
         BorderSpacing.Around = 5
         Color = clNone
         Constraints.MinHeight = 60
+        Constraints.MinWidth = 60
         DropDownWidth = 16
         DropDownArrowSize = 8
         GlobalOpacity = 255
