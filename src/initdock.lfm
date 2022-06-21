@@ -13,7 +13,6 @@ object frInit: TfrInit
     Top = 95
   end
   object UniqueInstance1: TUniqueInstance
-    Enabled = True
     Identifier = 'samarinda-docked-instance-kirana-core'
     Left = 170
     Top = 93
