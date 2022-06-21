@@ -30,13 +30,20 @@ type
 
   TfrDock = class(TForm)
     btLaunch: TBCButton;
-    pnDock: TBCPanel;
+    MenuItem1: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    Separator1: TMenuItem;
+    pnDock: TPanel;
+    pnCol: TBCPanel;
     pnContainer: TPanel;
+    mnDock: TPopupMenu;
     Timer1: TTimer;
     procedure btLaunchClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormChangeBounds(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure pnDockResize(Sender: TObject);
+    procedure pnColResize(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -53,6 +60,8 @@ type
       );
     procedure Panel1MouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure pnContainerResize(Sender: TObject);
+    procedure pnDockClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     mouseHandled: boolean;
@@ -60,6 +69,7 @@ type
     mouseY: integer;
     formX: integer;
     formY: integer;
+    procedure RePosition;
   public
     WindowList: TWindowList;
   end;
@@ -77,6 +87,7 @@ var
   Item: TMenuItem;
 begin
   inherited Create(AXWindowList, AWindow);
+  //frDock.pnDock.AutoSize := False;
   DockButton := TBCButton.Create(nil);
   DockButton.AutoSize := False;
   DockButton.Parent := frDock.pnDock;
@@ -130,7 +141,7 @@ begin
   DockButton.PopupMenu := DockPopup;
   bmp.Free;
   // LCL's autosize doesn't work properly?
-  frDock.Refresh;
+  //frDock.pnDock.AutoSize := True;
 end;
 
 destructor TDockWindow.Destroy;
@@ -200,15 +211,16 @@ end;
 procedure TfrDock.FormCreate(Sender: TObject);
 begin
   //QWidget_setVisible(TQtMainWindow(Self.Handle).GetContainerWidget, false);
-  //TQtWidget(pnDock.Handle).setParent(TQtMainWindow(Self.Handle).Widget);
+  //TQtWidget(pnCol.Handle).setParent(TQtMainWindow(Self.Handle).Widget);
 
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
   pnContainer.Align:=alClient;
   {$ifdef LCLQT5}
-    Caption:= 'qt5';
+    Caption:= 'Samarinda Dock';
   {$endif}
   WindowList := TWindowList.Create(TDockWindow);
+  AutoSize := True;
 end;
 
 procedure TfrDock.Button1Click(Sender: TObject);
@@ -216,10 +228,9 @@ begin
 
 end;
 
-procedure TfrDock.pnDockResize(Sender: TObject);
+procedure TfrDock.pnColResize(Sender: TObject);
 begin
-  Top := Screen.Height - Height;
-  Left := (Screen.Width div 2) - (Width div 2);
+
 end;
 
 procedure TfrDock.FormDestroy(Sender: TObject);
@@ -245,16 +256,21 @@ begin
     //frLauncher.SetFocus;
   end;
   //WindowList.UpdateDataList;
-  //pnDock.Caption := WindowList.Count.ToString;
+  //pnCol.Caption := WindowList.Count.ToString;
 end;
 
 procedure TfrDock.FormActivate(Sender: TObject);
 begin
-  //if frLauncher.Visible then
-  //begin
-  //  frLauncher.Visible := false;
-  //end;
-  //  frLauncher.Close;
+
+end;
+
+procedure TfrDock.FormChangeBounds(Sender: TObject);
+begin
+  RePosition;
+
+  //XMoveWindow(WindowList.XWindowListData.Display, QWidget_winId(
+  //  TQtMainWindow(Self.Handle).Widget), (Screen.Width div 2) -
+  //  (Width div 2), Screen.Height - Height);
 end;
 
 procedure TfrDock.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -283,8 +299,6 @@ end;
 
 procedure TfrDock.FormResize(Sender: TObject);
 begin
-  //pnContainer.Height:=Height;
-  //pnContainer.Width:=Width;
 
 end;
 
@@ -308,11 +322,9 @@ begin
 
 
   btLaunch.Width := btLaunch.Height;
-  Top := Screen.WorkAreaHeight - Height;
-  Left := (Screen.WorkAreaWidth div 2) - (Width div 2);
-
+  RePosition;
+  WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height);
   Self.ShowInTaskBar := stNever;
-  AutoSize := True;
 end;
 
 procedure TfrDock.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -322,7 +334,11 @@ begin
   mouseY:= Y;
   formX := Left;
   formY := Top;
-  //mouseHandled:=true;
+  mouseHandled:=true;
+  //btLaunchClick(self);
+  //Top := Top - 10;
+  //XMoveWindow(WindowList.XWindowListData.Display,
+  //QWidget_winId(TQtMainWindow(Self.Handle).Widget), Left, Top+10);
 end;
 
 procedure TfrDock.Panel1MouseMove(Sender: TObject; Shift: TShiftState; X,
@@ -350,9 +366,29 @@ begin
   mouseHandled:=false;
 end;
 
+procedure TfrDock.pnContainerResize(Sender: TObject);
+begin
+
+end;
+
+procedure TfrDock.pnDockClick(Sender: TObject);
+begin
+
+end;
+
 procedure TfrDock.Timer1Timer(Sender: TObject);
 begin
   WindowList.UpdateDataList;
+end;
+
+procedure TfrDock.RePosition;
+var
+  SelfWindow: TWindow;
+begin
+  SelfWindow := QWidget_winId(TQtMainWindow(Self.Handle).Widget);
+  Top := Screen.Height - Height;
+  Left := (Screen.Width div 2) - (Width div 2);
+  Width := pnContainer.Width;
 end;
 
 end.
