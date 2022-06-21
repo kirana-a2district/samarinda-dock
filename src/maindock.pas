@@ -140,8 +140,9 @@ begin
     DockButton.Glyph.Assign(bmp.Bitmap);
   DockButton.PopupMenu := DockPopup;
   bmp.Free;
-  SetIconGeometry(frDock.Top,
-    frDock.Left, DockButton.Width, DockButton.Height);
+  { forget about IconGeometry, no idea how it works. Just causing fullscreen glitch }
+  //SetIconGeometry(frDock.Top,
+  //  frDock.Left, DockButton.Width, DockButton.Height);
   // LCL's autosize doesn't work properly?
   //frDock.pnDock.AutoSize := True;
 end;

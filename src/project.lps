@@ -33,8 +33,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <TopLine Value="188"/>
-        <CursorPos X="55" Y="144"/>
+        <TopLine Value="134"/>
+        <CursorPos X="77" Y="143"/>
         <UsageCount Value="216"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -56,8 +56,8 @@
         <UnitName Value="WindowListUtils"/>
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="326"/>
-        <CursorPos X="11" Y="339"/>
+        <TopLine Value="323"/>
+        <CursorPos X="65" Y="325"/>
         <UsageCount Value="107"/>
         <Loaded Value="True"/>
       </Unit>
