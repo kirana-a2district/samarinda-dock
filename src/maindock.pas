@@ -140,6 +140,8 @@ begin
     DockButton.Glyph.Assign(bmp.Bitmap);
   DockButton.PopupMenu := DockPopup;
   bmp.Free;
+  SetIconGeometry(frDock.Top,
+    frDock.Left, DockButton.Width, DockButton.Height);
   // LCL's autosize doesn't work properly?
   //frDock.pnDock.AutoSize := True;
 end;
@@ -159,6 +161,8 @@ begin
     DockButton.StateNormal.Background.ColorOpacity := 50
   else
     DockButton.StateNormal.Background.ColorOpacity := 0;
+
+
 end;
 
 procedure TDockWindow.DockMaximizeWindow(Sender: TObject);
@@ -168,6 +172,7 @@ end;
 
 procedure TDockWindow.DockMinimizeWindow(Sender: TObject);
 begin
+
   if State = 'Iconic' then
     ActivateWindow
   else

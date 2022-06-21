@@ -34,8 +34,9 @@ implementation
 
 procedure TfrInit.FormShow(Sender: TObject);
 begin
-  frDock.Show;
   Hide;
+  Sleep(500);
+  frDock.Show;
 end;
 
 procedure TfrInit.DockAppDeactivate(Sender: TObject);

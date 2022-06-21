@@ -19,6 +19,7 @@ object frDock: TfrDock
   OnMouseUp = FormMouseUp
   OnResize = FormResize
   OnShow = FormShow
+  LCLVersion = '2.2.3.0'
   object pnContainer: TPanel
     Left = 0
     Height = 72
