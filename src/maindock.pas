@@ -64,14 +64,16 @@ type
     procedure pnDockClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
+    ffff: Integer;
     mouseHandled: boolean;
     mouseX: integer;
     mouseY: integer;
     formX: integer;
     formY: integer;
-    procedure RePosition;
+
   public
     WindowList: TWindowList;
+    procedure RePosition;
   end;
 
 var
@@ -87,6 +89,7 @@ var
   Item: TMenuItem;
 begin
   inherited Create(AXWindowList, AWindow);
+
   //frDock.pnDock.AutoSize := False;
   DockButton := TBCButton.Create(nil);
   DockButton.AutoSize := False;
@@ -137,22 +140,25 @@ begin
   DockButton.Assign(frDock.btLaunch);
   bmp := GetIcon;
   if Assigned(bmp) then
-    DockButton.Glyph.Assign(bmp.Bitmap);
+    DockButton.Glyph.Assign(bmp.Bitmap)
+  else
+    DockButton.Glyph.Assign(frLauncher.btLaunch.Glyph);
   DockButton.PopupMenu := DockPopup;
   bmp.Free;
   { forget about IconGeometry, no idea how it works. Just causing fullscreen glitch }
   //SetIconGeometry(frDock.Top,
   //  frDock.Left, DockButton.Width, DockButton.Height);
   // LCL's autosize doesn't work properly?
-  //frDock.pnDock.AutoSize := True;
+  frDock.Constraints.MinWidth := frDock.pnContainer.Width;
+  frDock.RePosition;
 end;
 
 destructor TDockWindow.Destroy;
 begin
   // LCL's autosize doesn't work properly?
-  frDock.Refresh;
   FreeAndNil(DockPopup);
   FreeAndNil(DockButton);
+  frDock.RePosition;
   inherited Destroy;
 end;
 
@@ -216,17 +222,19 @@ end;
 
 procedure TfrDock.FormCreate(Sender: TObject);
 begin
+  //AutoSize := True;
+  ffff := 0;
   //QWidget_setVisible(TQtMainWindow(Self.Handle).GetContainerWidget, false);
   //TQtWidget(pnCol.Handle).setParent(TQtMainWindow(Self.Handle).Widget);
 
   QWidget_setAttribute(TQtMainWindow(Self.Handle).Widget, QtWA_TranslucentBackground);
   QWidget_setAttribute(TQtMainWindow(Self.Handle).GetContainerWidget, QtWA_TranslucentBackground);
-  pnContainer.Align:=alClient;
+  //pnContainer.Align:=alClient;
   {$ifdef LCLQT5}
     Caption:= 'Samarinda Dock';
   {$endif}
-  WindowList := TWindowList.Create(TDockWindow);
-  AutoSize := True;
+
+
 end;
 
 procedure TfrDock.Button1Click(Sender: TObject);
@@ -272,7 +280,8 @@ end;
 
 procedure TfrDock.FormChangeBounds(Sender: TObject);
 begin
-  RePosition;
+
+
 
   //XMoveWindow(WindowList.XWindowListData.Display, QWidget_winId(
   //  TQtMainWindow(Self.Handle).Widget), (Screen.Width div 2) -
@@ -305,7 +314,10 @@ end;
 
 procedure TfrDock.FormResize(Sender: TObject);
 begin
-
+  {broken}
+  //RePosition;
+  //ffff += 1;
+  //frLauncher.Panel1.Caption := Top.ToString + '; ' + Left.ToString + ': ' + ffff.ToString;
 end;
 
 //procedure TfrDock.WMWindowPosChanged(var Message: TLMWindowPosChanged);
@@ -323,14 +335,20 @@ begin
 
   SelfWindow := QWidget_winId(TQtMainWindow(Self.Handle).Widget);
   Self.FormStyle := fsSystemStayOnTop;
-  WindowList.XWindowListData.SetDockedMode(SelfWindow);
-  WindowList.XWindowListData.ActivateWindow(SelfWindow);
 
 
-  btLaunch.Width := btLaunch.Height;
+
+  btLaunch.Constraints.MinWidth := btLaunch.Height;
   RePosition;
-  WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height);
+
   Self.ShowInTaskBar := stNever;
+  if not Assigned(WindowList) then
+  begin
+    WindowList := TWindowList.Create(TDockWindow);
+    WindowList.XWindowListData.SetDockedMode(SelfWindow);
+    WindowList.XWindowListData.ActivateWindow(SelfWindow);
+    WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height);
+  end;
 end;
 
 procedure TfrDock.Panel1MouseDown(Sender: TObject; Button: TMouseButton;
@@ -393,7 +411,7 @@ var
 begin
   SelfWindow := QWidget_winId(TQtMainWindow(Self.Handle).Widget);
   Top := Screen.Height - Height;
-  Left := (Screen.Width div 2) - (Width div 2);
+  Left := (Screen.Width div 2) - (pnContainer.Width div 2);
   Width := pnContainer.Width;
 end;
 

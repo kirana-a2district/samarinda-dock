@@ -35,7 +35,7 @@ implementation
 procedure TfrInit.FormShow(Sender: TObject);
 begin
   Hide;
-  Sleep(500);
+  Sleep(1000);
   frDock.Show;
 end;
 
