@@ -24,6 +24,8 @@ type
     btLaunchHelper: TBCButton;
     Panel1: TPanel;
     pnLauncher: TBCPanel;
+    Timer1: TTimer;
+    Timer2: TTimer;
     procedure FormActivate(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
@@ -32,6 +34,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure ScrollBox1MouseEnter(Sender: TObject);
     procedure ScrollBox1MouseLeave(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure Timer2Timer(Sender: TObject);
   private
     StartRefresh: boolean;
     AppMon: TSystemAppMonitor;
@@ -300,6 +304,34 @@ procedure TfrLauncher.ScrollBox1MouseLeave(Sender: TObject);
 begin
   //ScrollBox1.VertScrollBar.Visible := False;
   //ScrollBox1.HorzScrollBar.Visible := False;
+end;
+
+procedure TfrLauncher.Timer1Timer(Sender: TObject);
+begin
+  Panel1.Caption := Mouse.CursorPos.X.ToString + '; ' + Mouse.CursorPos.Y.ToString;
+  if Mouse.CursorPos.Y > frDock.Top then
+    frDock.RePosition
+  else
+  begin
+    if frDock.Top < Screen.Height - 10 then
+      frDock.Top := frDock.Top + 10;
+  end;
+end;
+
+procedure TfrLauncher.Timer2Timer(Sender: TObject);
+begin
+  if Mouse.CursorPos.Y > frDock.Top then
+  begin
+    frDock.Show;
+    frDock.RePosition
+  end
+  else
+  begin
+    if frDock.Top < Screen.Height - 10 then
+      frDock.Top := frDock.Top + 10
+    else
+      frDock.Hide;
+  end;
 end;
 
 end.

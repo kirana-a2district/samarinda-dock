@@ -745,4 +745,17 @@ object frLauncher: TfrLauncher
     Left = 592
     Top = 21
   end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 241
+    Top = 14
+  end
+  object Timer2: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer2Timer
+    Left = 179
+    Top = 49
+  end
 end

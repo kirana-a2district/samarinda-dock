@@ -6,8 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
-  ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, WindowListUtils,
-  x, xwindowlist, BGRABitmap, DockLauncher, Menus, BCTypes, xatom, xlib, ctypes;
+  ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, KiranaWindows,
+  x, XWindowUtils, BGRABitmap, DockLauncher, Menus, BCTypes, xatom, xlib, ctypes;
 
 type
 
@@ -18,7 +18,7 @@ type
     DockButton: TBCButton;
     DockPopup: TPopupMenu;
     procedure DockButtonClick(Sender: TObject);
-    constructor Create(AXWindowList: TXWindowList; AWindow: TWindow); override;
+    constructor Create(AXWindowList: TXWindowManager; AWindow: TWindow); override;
     procedure DoActiveChange(IsActive: boolean); override;
     procedure DockMaximizeWindow(Sender: TObject);
     procedure DockMinimizeWindow(Sender: TObject);
@@ -83,7 +83,7 @@ implementation
 uses initdock;
 {$R *.lfm}
 
-constructor TDockWindow.Create(AXWindowList: TXWindowList; AWindow: TWindow);
+constructor TDockWindow.Create(AXWindowList: TXWindowManager; AWindow: TWindow);
 var
   bmp: TBGRABitmap;
   Item: TMenuItem;
@@ -345,6 +345,7 @@ begin
   if not Assigned(WindowList) then
   begin
     WindowList := TWindowList.Create(TDockWindow);
+    ExcludeWindow := SelfWindow;
     WindowList.XWindowListData.SetDockedMode(SelfWindow);
     WindowList.XWindowListData.ActivateWindow(SelfWindow);
     WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height);
@@ -416,4 +417,3 @@ begin
 end;
 
 end.
-
