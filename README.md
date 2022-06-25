@@ -1,6 +1,10 @@
 # Samarinda Dock Taskbar
 Nothing special, just a docked taskbar for KDE, made with Free Pascal and Qt5.
 
+### future features
+- one taskicon per application PID
+- icon preview on mouse hover
+
 Docked taskbar for Kirana Project
 ![Samarinda Dock](https://github.com/kirana-a2district/samarinda-dock/raw/main/screenshots/Screenshot_20220621_231252.png)
 ![Samarinda Dock](https://github.com/kirana-a2district/samarinda-dock/raw/main/screenshots/Screenshot_20220621_231308.png)
