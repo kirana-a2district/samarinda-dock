@@ -43,6 +43,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure FormChangeBounds(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure MenuItem3Click(Sender: TObject);
     procedure pnColResize(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -234,7 +235,7 @@ begin
     Caption:= 'Samarinda Dock';
   {$endif}
 
-
+  FormStyle := fsStayOnTop;
 end;
 
 procedure TfrDock.Button1Click(Sender: TObject);
@@ -250,6 +251,15 @@ end;
 procedure TfrDock.FormDestroy(Sender: TObject);
 begin
   FreeAndNil(WindowList);
+end;
+
+procedure TfrDock.MenuItem3Click(Sender: TObject);
+begin
+  if MessageDlg('Confirmation',
+    'This action will destroy Samarinda Dock process.'
+    +#10'Are you sure still want to proceed?', mtConfirmation,
+    [mbYes, mbNo], 0) = mrYes
+  then Application.Terminate;
 end;
 
 procedure TfrDock.btLaunchClick(Sender: TObject);
@@ -347,8 +357,9 @@ begin
     WindowList := TWindowList.Create(TDockWindow);
     ExcludeWindow := SelfWindow;
     WindowList.XWindowListData.SetDockedMode(SelfWindow);
+
+    WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height, 1);
     WindowList.XWindowListData.ActivateWindow(SelfWindow);
-    WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height);
   end;
 end;
 

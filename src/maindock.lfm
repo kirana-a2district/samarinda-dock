@@ -367,6 +367,7 @@ object frDock: TfrDock
     end
     object MenuItem3: TMenuItem
       Caption = 'Kill Dock'
+      OnClick = MenuItem3Click
     end
   end
 end
