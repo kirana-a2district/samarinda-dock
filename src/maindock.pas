@@ -357,7 +357,6 @@ begin
     WindowList := TWindowList.Create(TDockWindow);
     ExcludeWindow := SelfWindow;
     WindowList.XWindowListData.SetDockedMode(SelfWindow);
-
     WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height, 1);
     WindowList.XWindowListData.ActivateWindow(SelfWindow);
   end;

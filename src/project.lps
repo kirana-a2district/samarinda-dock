@@ -30,9 +30,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="350"/>
-        <CursorPos X="16" Y="362"/>
+        <CursorPos X="58" Y="359"/>
         <UsageCount Value="216"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -45,7 +44,7 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DockLauncher"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="145"/>
+        <TopLine Value="152"/>
         <CursorPos X="26" Y="97"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -63,9 +62,10 @@
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/xwindowutils.pas"/>
         <UnitName Value="XWindowUtils"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="565"/>
-        <CursorPos X="77" Y="572"/>
+        <TopLine Value="665"/>
+        <CursorPos X="44" Y="673"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit>
@@ -243,7 +243,7 @@
         <UsageCount Value="8"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="14">
+    <JumpHistory HistoryIndex="15">
       <Position>
         <Filename Value="docklauncher.pas"/>
         <Caret Line="314" Column="7" TopLine="302"/>
@@ -303,6 +303,10 @@
       <Position>
         <Filename Value="../../kiranacore-pkg/src/xeventwatcher.pas"/>
         <Caret Line="71" Column="68" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="../../kiranacore-pkg/src/xwindowutils.pas"/>
+        <Caret Line="693" TopLine="672"/>
       </Position>
     </JumpHistory>
     <RunParams>
