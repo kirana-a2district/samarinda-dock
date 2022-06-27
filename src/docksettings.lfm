@@ -1,0 +1,34 @@
+object frDockSettings: TfrDockSettings
+  Left = 466
+  Height = 380
+  Top = 35
+  Width = 472
+  Caption = 'Dock Settings'
+  ClientHeight = 380
+  ClientWidth = 472
+  DesignTimePPI = 120
+  FormStyle = fsSystemStayOnTop
+  OnShow = FormShow
+  Position = poScreenCenter
+  object cbAutoHide: TCheckBox
+    Left = 16
+    Height = 26
+    Hint = 'Automatically hide the taskbar when the cursor away'
+    Top = 16
+    Width = 157
+    Caption = 'Auto Hide Taskbar'
+    OnChange = cbAutoHideChange
+    TabOrder = 0
+  end
+  object btApply: TButton
+    Left = 360
+    Height = 42
+    Top = 328
+    Width = 99
+    Anchors = [akRight, akBottom]
+    Caption = 'Apply'
+    Enabled = False
+    OnClick = btApplyClick
+    TabOrder = 1
+  end
+end

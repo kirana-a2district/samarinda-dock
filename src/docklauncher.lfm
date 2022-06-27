@@ -16,6 +16,7 @@ object frLauncher: TfrLauncher
   OnResize = FormResize
   OnShow = FormShow
   ShowInTaskBar = stNever
+  LCLVersion = '2.2.3.0'
   object pnLauncher: TBCPanel
     Left = 0
     Height = 550

@@ -7,10 +7,11 @@
       <Unit>
         <Filename Value="project.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
-        <CursorPos X="42" Y="13"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="9"/>
+        <CursorPos X="56" Y="13"/>
         <UsageCount Value="216"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="initdock.pas"/>
@@ -18,10 +19,12 @@
         <ComponentName Value="frInit"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="9"/>
-        <CursorPos X="37" Y="25"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="33"/>
+        <CursorPos X="79" Y="39"/>
         <UsageCount Value="216"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="maindock.pas"/>
@@ -30,8 +33,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainDock"/>
-        <TopLine Value="350"/>
-        <CursorPos X="58" Y="359"/>
+        <TopLine Value="97"/>
+        <CursorPos X="22" Y="263"/>
         <UsageCount Value="216"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -43,9 +46,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DockLauncher"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="152"/>
-        <CursorPos X="26" Y="97"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="61"/>
+        <CursorPos X="47" Y="49"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -53,8 +56,8 @@
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/kiranawindows.pas"/>
         <UnitName Value="KiranaWindows"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="458"/>
+        <EditorIndex Value="5"/>
+        <TopLine Value="457"/>
         <CursorPos X="15" Y="254"/>
         <UsageCount Value="107"/>
         <Loaded Value="True"/>
@@ -62,10 +65,9 @@
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/xwindowutils.pas"/>
         <UnitName Value="XWindowUtils"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="665"/>
-        <CursorPos X="44" Y="673"/>
+        <EditorIndex Value="6"/>
+        <TopLine Value="482"/>
+        <CursorPos X="79" Y="693"/>
         <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit>
@@ -108,10 +110,10 @@
       </Unit>
       <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/fpcsrc/packages/x11/src/xlib.pp"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="1604"/>
         <CursorPos X="10" Y="1613"/>
-        <UsageCount Value="98"/>
+        <UsageCount Value="100"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -139,10 +141,10 @@
       <Unit>
         <Filename Value="../../kiranacore-pkg/src/xeventwatcher.pas"/>
         <UnitName Value="XEventWatcher"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="50"/>
         <CursorPos Y="107"/>
-        <UsageCount Value="44"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -223,8 +225,8 @@
         <UnitName Value="Controls"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="1761"/>
-        <CursorPos X="14" Y="1770"/>
-        <UsageCount Value="7"/>
+        <CursorPos X="14" Y="1773"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="../../../../fpc-dev/fpc-files/config_lazarus/onlinepackagemanager/packages/bgracontrols-master/bcpanel.pas"/>
@@ -242,12 +244,22 @@
         <CursorPos X="4" Y="104"/>
         <UsageCount Value="8"/>
       </Unit>
+      <Unit>
+        <Filename Value="docksettings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frDockSettings"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DockSettings"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="38"/>
+        <CursorPos X="32" Y="47"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="15">
-      <Position>
-        <Filename Value="docklauncher.pas"/>
-        <Caret Line="314" Column="7" TopLine="302"/>
-      </Position>
+    <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="maindock.pas"/>
         <Caret Line="155" Column="16" TopLine="138"/>
@@ -307,6 +319,66 @@
       <Position>
         <Filename Value="../../kiranacore-pkg/src/xwindowutils.pas"/>
         <Caret Line="693" TopLine="672"/>
+      </Position>
+      <Position>
+        <Filename Value="initdock.pas"/>
+        <Caret Line="40" Column="12" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="362" Column="74" TopLine="354"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="363" Column="74" TopLine="355"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="362" Column="74" TopLine="354"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="364" Column="74" TopLine="356"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="428" Column="16" TopLine="420"/>
+      </Position>
+      <Position>
+        <Filename Value="initdock.pas"/>
+        <Caret Line="46" Column="40" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="437" Column="43" TopLine="421"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="432" Column="49" TopLine="423"/>
+      </Position>
+      <Position>
+        <Filename Value="docksettings.pas"/>
+        <Caret Column="18" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="432" Column="79" TopLine="431"/>
+      </Position>
+      <Position>
+        <Filename Value="maindock.pas"/>
+        <Caret Line="263" Column="22" TopLine="256"/>
+      </Position>
+      <Position>
+        <Filename Value="docksettings.pas"/>
+        <Caret Line="36" Column="26" TopLine="22"/>
+      </Position>
+      <Position>
+        <Filename Value="docksettings.pas"/>
+        <Caret Line="44" Column="7" TopLine="34"/>
+      </Position>
+      <Position>
+        <Filename Value="docksettings.pas"/>
+        <Caret Line="53" Column="50" TopLine="35"/>
       </Position>
     </JumpHistory>
     <RunParams>

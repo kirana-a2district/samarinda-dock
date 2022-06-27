@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, LCLType, LCLIntf,
   ExtCtrls, BCPanel, BCButton, BCListBox, qt5, qtwidgets, KiranaWindows,
-  x, XWindowUtils, BGRABitmap, DockLauncher, Menus, BCTypes, xatom, xlib, ctypes;
+  x, XWindowUtils, BGRABitmap, DockLauncher, Menus, BCTypes, xatom, xlib, ctypes,
+  DockSettings;
 
 type
 
@@ -30,7 +31,7 @@ type
 
   TfrDock = class(TForm)
     btLaunch: TBCButton;
-    MenuItem1: TMenuItem;
+    miDockSettings: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     Separator1: TMenuItem;
@@ -39,10 +40,12 @@ type
     pnContainer: TPanel;
     mnDock: TPopupMenu;
     Timer1: TTimer;
+    tmrAutoHide: TTimer;
     procedure btLaunchClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure FormChangeBounds(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+    procedure miDockSettingsClick(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
     procedure pnColResize(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -64,6 +67,7 @@ type
     procedure pnContainerResize(Sender: TObject);
     procedure pnDockClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure tmrAutoHideTimer(Sender: TObject);
   private
     ffff: Integer;
     mouseHandled: boolean;
@@ -74,6 +78,7 @@ type
 
   public
     WindowList: TWindowList;
+    DockMode: string;
     procedure RePosition;
   end;
 
@@ -253,6 +258,11 @@ begin
   FreeAndNil(WindowList);
 end;
 
+procedure TfrDock.miDockSettingsClick(Sender: TObject);
+begin
+  frDockSettings.Show;
+end;
+
 procedure TfrDock.MenuItem3Click(Sender: TObject);
 begin
   if MessageDlg('Confirmation',
@@ -357,7 +367,8 @@ begin
     WindowList := TWindowList.Create(TDockWindow);
     ExcludeWindow := SelfWindow;
     WindowList.XWindowListData.SetDockedMode(SelfWindow);
-    WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height, 1);
+    if DockMode = 'normal' then
+      WindowList.XWindowListData.SetStrut(SelfWindow, Width, Height, 1);
     WindowList.XWindowListData.ActivateWindow(SelfWindow);
   end;
 end;
@@ -414,6 +425,25 @@ end;
 procedure TfrDock.Timer1Timer(Sender: TObject);
 begin
   WindowList.UpdateDataList;
+end;
+
+procedure TfrDock.tmrAutoHideTimer(Sender: TObject);
+begin
+  if Mouse.CursorPos.y >= (Screen.Height - (Height div 4)) then
+  begin
+    if AlphaBlendValue < 250 then
+      AlphaBlendValue := AlphaBlendValue + 50
+    else if AlphaBlendValue = 250 then
+      AlphaBlendValue := AlphaBlendValue + 5;
+  end
+  else if (Mouse.CursorPos.y <= (Screen.Height - Height)) and
+    (not frLauncher.Visible) then
+  begin
+    if AlphaBlendValue > 5 then
+      AlphaBlendValue := AlphaBlendValue - 50
+    else if AlphaBlendValue = 5 then
+      AlphaBlendValue := AlphaBlendValue - 5;
+  end;
 end;
 
 procedure TfrDock.RePosition;

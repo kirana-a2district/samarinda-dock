@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, UniqueInstance,
-  MainDock, DockLauncher;
+  MainDock, DockLauncher, IniFiles;
 
 type
 
@@ -33,10 +33,17 @@ implementation
 { TfrInit }
 
 procedure TfrInit.FormShow(Sender: TObject);
+var
+  cfg: TIniFile;
 begin
+  cfg := TIniFile.Create(ExtractFilePath(Application.ExeName) + 'dock.cfg');
+  frDock.DockMode := cfg.ReadString('Dock', 'mode', 'normal');
+  cfg.Free;
   Hide;
   Sleep(1000);
   frDock.Show;
+  if frDock.DockMode <> 'normal' then
+    frDock.tmrAutoHide.Enabled := True;
 end;
 
 procedure TfrInit.DockAppDeactivate(Sender: TObject);

@@ -2,12 +2,12 @@ object frDock: TfrDock
   Left = 373
   Height = 72
   Top = 250
-  Width = 125
-  AlphaBlendValue = 200
+  Width = 279
+  AlphaBlend = True
   BorderStyle = bsNone
   Caption = '0'
   ClientHeight = 72
-  ClientWidth = 125
+  ClientWidth = 279
   DesignTimePPI = 120
   OnActivate = FormActivate
   OnChangeBounds = FormChangeBounds
@@ -19,7 +19,6 @@ object frDock: TfrDock
   OnMouseUp = FormMouseUp
   OnResize = FormResize
   OnShow = FormShow
-  LCLVersion = '2.2.3.0'
   object pnContainer: TPanel
     Left = 0
     Height = 72
@@ -356,8 +355,9 @@ object frDock: TfrDock
   object mnDock: TPopupMenu
     Left = 91
     Top = 8
-    object MenuItem1: TMenuItem
+    object miDockSettings: TMenuItem
       Caption = 'Dock Settings'
+      OnClick = miDockSettingsClick
     end
     object Separator1: TMenuItem
       Caption = '-'
@@ -369,5 +369,12 @@ object frDock: TfrDock
       Caption = 'Kill Dock'
       OnClick = MenuItem3Click
     end
+  end
+  object tmrAutoHide: TTimer
+    Enabled = False
+    Interval = 50
+    OnTimer = tmrAutoHideTimer
+    Left = 192
+    Top = 8
   end
 end

@@ -46,6 +46,8 @@ type
 
   end;
 
+  procedure StartDetachedProgram(cmd: string);
+
 var
   frLauncher: TfrLauncher;
 
